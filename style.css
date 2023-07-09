@@ -13,7 +13,7 @@ body {
 }
 
 .library-container {
-    visibility: hidden;
+    /* visibility: hidden; */
     height:100vh;
     display:flex;
     justify-content: center;
@@ -21,16 +21,34 @@ body {
 }
 
 .library {
+    position: relative;
     width: 80vw;
     height: 80vh;
     background: linear-gradient(20deg, rgba(0, 128, 0, 0.349), rgba(50, 207, 255, 0.336));
     border-radius: 30px;
 }
 
+.library-grid {
+    
+}
+
+.add-entry {
+    position: absolute;
+    bottom: 0%;
+    width:50px;
+    height:50px;
+    right: 0%;
+    margin: 3.5%;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 2rem;
+    background-color: rgb(173, 255, 173);
+}
+
 .form-container {
     position: absolute;
     top:0%;
-    /* visibility: hidden; */
+    visibility: hidden;
     height: 100vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.400);
@@ -40,6 +58,7 @@ body {
 }
 
 .form {
+    position:relative;
     height: 65%;
     width: 35%;
     background: linear-gradient(80deg, rgba(231, 255, 222, 0.705), rgba(255, 255, 255, 0.219), rgba(197, 232, 255, 0.822));
@@ -98,5 +117,16 @@ body {
     border-radius: 10px;
     border:none;
     outline:none;
+}
+
+.close-button {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 0%;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 20px;
+    background-color: rgb(255, 126, 126);
 }
 
