@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap" rel="stylesheet">
     <title>Library</title>
 </head>
 <body>
@@ -14,6 +17,26 @@
     </div>
     <div class="form-container">
         <form class="form" action="#" method="post">
+            <div class="form-title">Add Entry</div>
+            <div class="entries">
+                <div class="entry">
+                    <label for="author">Author</label>
+                    <input type="text"  name="author" id="author"/>
+                </div>
+                <div class="entry">
+                    <label for="pages">Title</label>
+                    <input type="text"  name="title" id="title" required/>
+                </div>
+                <div class="entry">
+                    <label for="pages">Number of Pages</label>
+                    <input type="text"  name="pages" id="pages"/>
+                </div>
+                <div class="read">
+                    <label for="read">Read</label>
+                    <input type="checkbox"  name="read" id="read" required/>
+                </div>
+                <button class="submit" type="submit">Add</button>
+            </div>
         </form>
     </div>
 </body>

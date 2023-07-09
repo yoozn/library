@@ -2,6 +2,8 @@
     box-sizing: border-box;
     margin:0;
     padding:0;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -43,4 +45,58 @@ body {
     background: linear-gradient(80deg, rgba(231, 255, 222, 0.705), rgba(255, 255, 255, 0.219), rgba(197, 232, 255, 0.822));
     margin-bottom: 7%;
     border-radius: 20px;
+    border-top: 4px solid rgba(216, 255, 212, 0.712);
+    border-left: 4px solid rgba(216, 255, 212, 0.712);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+.form-title {
+    margin-top: 20px;
+    margin-bottom:60px;
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+
+.entries {
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 25px;
+}
+
+.entry {
+    display:flex;
+    flex-direction: column;
+}
+
+.read {
+    display:flex;
+    gap: 10px;
+}
+
+.entry > label,
+.read > label {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.entry > input {
+    height: 25px;
+    border-radius: 10px;
+}
+
+.read > input {
+    size: 40px;
+}
+
+.submit {
+    width: 100%;
+    height:30px;
+    border-radius: 10px;
+    border:none;
+    outline:none;
+}
+
