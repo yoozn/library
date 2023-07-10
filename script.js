@@ -9,6 +9,7 @@ const formRead = document.querySelector("#read");
 const confirmEntry = document.querySelector(".submit");
 const libraryContainer = document.querySelector(".library-container");
 const libraryInnerContainer = document.querySelector(".library");
+const removeEntryButton = document.querySelector(".remove-entry");
 let libraryGrid = document.querySelector(".library-grid");
 
 let myLibrary = [];
@@ -27,31 +28,49 @@ Book.prototype.info = function() {
 function addBookToLibrary() {
     const newBook = new Book(formTitle.value, formAuthor.value, formPages.value, formRead.value);
     myLibrary.push(newBook);
+    updateLibrary();
+}
+
+function updateLibrary() {
     libraryGrid.remove();
     libraryGrid = document.createElement('div');
     libraryGrid.classList.add('library-grid');
     libraryInnerContainer.appendChild(libraryGrid);
     for (let i=0 ; i< myLibrary.length; i++) {
-        const book = document.createElement('div');
-        book.classList.add("book");
-        libraryGrid.appendChild(book);
-        const title = document.createElement('p');
-        const author = document.createElement('p');
-        const pages = document.createElement('p');
-        const read = document.createElement('p');
-        title.classList.add('b-title');
-        author.classList.add('b-author');
-        pages.classList.add('b-pages');
-        read.classList.add('b-read');
-        title.textContent = myLibrary[i].title;
-        author.textContent = myLibrary[i].author;
-        pages.textContent = myLibrary[i].pages;
-        read.textContent = (myLibrary[i].read == "on") ? "read" : "not read";
-        book.appendChild(title);
-        book.appendChild(author);
-        book.appendChild(pages);
-        book.appendChild(read);
+        addEntryToDom(i);
     }
+}
+
+function addEntryToDom(i) {
+    console.log(i);
+    const book = document.createElement('div');
+    book.classList.add("book");
+    book.dataset.index = i;
+    libraryGrid.appendChild(book);
+    const title = document.createElement('p');
+    const author = document.createElement('p');
+    const pages = document.createElement('p');
+    const read = document.createElement('p');
+    const remove = document.createElement('button');
+    title.classList.add('b-title');
+    author.classList.add('b-author');
+    pages.classList.add('b-pages');
+    read.classList.add('b-read');
+    remove.classList.add('remove-entry');
+    title.textContent = myLibrary[i].title;
+    author.textContent = myLibrary[i].author;
+    pages.textContent = myLibrary[i].pages;
+    read.textContent = (myLibrary[i].read == "on") ? "read" : "not read";
+    book.appendChild(title);
+    book.appendChild(author);
+    book.appendChild(pages);
+    book.appendChild(read);
+    book.appendChild(remove);
+    remove.addEventListener('click', () => {
+        const index = remove.parentElement.dataset.index;
+        myLibrary.splice(index, 1);
+        updateLibrary();
+    })
 }
 
 function initialize() {
