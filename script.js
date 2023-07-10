@@ -26,7 +26,7 @@ Book.prototype.info = function() {
 }
 
 function addBookToLibrary() {
-    const newBook = new Book(formTitle.value, formAuthor.value, formPages.value, formRead.value);
+    const newBook = new Book(formTitle.value, formAuthor.value, formPages.value, formRead.checked);
     myLibrary.push(newBook);
     updateLibrary();
 }
@@ -42,7 +42,6 @@ function updateLibrary() {
 }
 
 function addEntryToDom(i) {
-    console.log(i);
     const book = document.createElement('div');
     book.classList.add("book");
     book.dataset.index = i;
@@ -50,27 +49,43 @@ function addEntryToDom(i) {
     const title = document.createElement('p');
     const author = document.createElement('p');
     const pages = document.createElement('p');
-    const read = document.createElement('p');
+    const readContainer = document.createElement('div');
+    const readLabel = document.createElement('label');
+    const readCheck = document.createElement('input');
     const remove = document.createElement('button');
     title.classList.add('b-title');
     author.classList.add('b-author');
     pages.classList.add('b-pages');
-    read.classList.add('b-read');
+    readContainer.classList.add('read-container');
+    readLabel.htmlFor = 'b-read';
+    readCheck.type = 'checkbox';
+    readCheck.id = 'b-read';
+    // read.classList.add('b-read');
     remove.classList.add('remove-entry');
     title.textContent = myLibrary[i].title;
     author.textContent = myLibrary[i].author;
     pages.textContent = myLibrary[i].pages;
-    read.textContent = (myLibrary[i].read == "on") ? "read" : "not read";
+    readLabel.textContent = "Read";
+    readCheck.checked = myLibrary[i].read;
+    // read.textContent = (myLibrary[i].read == "on") ? "read" : "not read";
     book.appendChild(title);
     book.appendChild(author);
     book.appendChild(pages);
-    book.appendChild(read);
+    book.appendChild(readContainer);
+    readContainer.appendChild(readLabel);
+    readContainer.appendChild(readCheck);
     book.appendChild(remove);
+    readCheck.addEventListener('input', () => {
+
+        myLibrary[i].read = readCheck.checked;
+    });
     remove.addEventListener('click', () => {
         const index = remove.parentElement.dataset.index;
         myLibrary.splice(index, 1);
         updateLibrary();
-    })
+    });
+    form.reset();
+    console.log(myLibrary);
 }
 
 function initialize() {
