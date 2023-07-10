@@ -168,7 +168,7 @@ body {
 .book.shrink {
     transform:scale(0);
     transition: .6s;
-    /* transform-origin: initial; */
+    transform-origin: bottom center;
 }
 
 .form-title {
