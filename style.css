@@ -66,6 +66,10 @@ body {
     font-size: auto;
 }
 
+#b-read {
+    margin-left: 10px;
+}
+
 .add-entry {
     position: absolute;
     bottom: 0%;
