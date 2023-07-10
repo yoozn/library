@@ -1,4 +1,4 @@
-const addEntry = document.querySelector(".add-entry");
+let addEntry = document.querySelector(".add-entry");
 const formClose = document.querySelector(".close-button");
 const formContainer = document.querySelector(".form-container");
 const form = document.querySelector(".form");
@@ -39,6 +39,14 @@ function updateLibrary() {
     for (let i=0 ; i< myLibrary.length; i++) {
         addEntryToDom(i);
     }
+    addEntry = document.createElement('button');
+    addEntry.classList.add('add-entry');
+    addEntry.textContent = "+";
+    libraryGrid.appendChild(addEntry);
+    addEntry.addEventListener('click', ()=> {
+        libraryContainer.style.visibility = "hidden";
+        formContainer.style.visibility = "visible";
+    });
 }
 
 function addEntryToDom(i) {
@@ -84,6 +92,7 @@ function addEntryToDom(i) {
         myLibrary.splice(index, 1);
         updateLibrary();
     });
+
     form.reset();
     console.log(myLibrary);
 }
