@@ -26,6 +26,15 @@ body {
     font-size: 3rem;
     align-items: center;
     padding-left: 2%;
+    user-select: none;
+}
+.header > p {
+    transition: .5s;
+}
+
+.header > p:hover {
+    transition: .5s;
+    transform:scale(1.1) rotate(-2deg);
 }
 
 .library-container {
@@ -55,7 +64,7 @@ body {
 
 .book {
     position:relative;
-    background: linear-gradient(-30deg, rgba(44, 44, 44, 0.678), rgba(32, 32, 32, 0.616));
+    background: linear-gradient(-30deg, rgba(44, 44, 44, 0.9), rgba(32, 32, 32, 0.95));
     /* background-color: rgb(255, 241, 163); */
     margin: 20px;
     height: 240px;
@@ -91,17 +100,18 @@ body {
 .add-entry {
     /* position: absolute; */
     /* bottom: 0%; */
-    width:55px;
-    height:55px;
+    width:70px;
+    height:70px;
     /* right: 0%; */
     /* margin: 40% 25%; */
     border-radius: 50%;
     text-align: center;
     font-size: 2rem;
     color:rgba(255, 255, 255, 0.699);
-    background-color: rgba(255, 248, 149, 0.164);
+    background-color: rgba(36, 35, 29, 0.788);
     border: 2px solid rgba(255, 208, 0, 0.445);
     justify-self: center;
+    align-self: center;
 }
 
 .form-container {
