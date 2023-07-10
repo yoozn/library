@@ -8,7 +8,6 @@ const formPages = document.querySelector("#pages");
 const formRead = document.querySelector("#read");
 const confirmEntry = document.querySelector(".submit");
 const libraryContainer = document.querySelector(".library-container");
-// const libraryInnerContainer = document.querySelector(".library");
 const removeEntryButton = document.querySelector(".remove-entry");
 let libraryGrid = document.querySelector(".library-grid");
 
@@ -47,12 +46,6 @@ function updateLibrary() {
     addEntry.textContent = "+";
     libraryGrid.appendChild(addEntry);
     addEntry.addEventListener('click', ()=> {
-        // libraryContainer.style.visibility = "hidden";
-        // formContainer.style.visibility = "visible";
-        // libraryContainer.style.opacity = 0;
-        // formContainer.style.opacity = 100;
-        // libraryContainer.classList.add('invisible');
-        // formContainer.classList.remove('invisible');
         toggleFormVisible();
     });
 }
@@ -76,14 +69,12 @@ function addEntryToDom(i) {
     readLabel.htmlFor = 'b-read';
     readCheck.type = 'checkbox';
     readCheck.id = 'b-read';
-    // read.classList.add('b-read');
     remove.classList.add('remove-entry');
     title.textContent = myLibrary[i].title;
     author.textContent = myLibrary[i].author;
     pages.textContent = myLibrary[i].pages;
     readLabel.textContent = "Read";
     readCheck.checked = myLibrary[i].read;
-    // read.textContent = (myLibrary[i].read == "on") ? "read" : "not read";
     book.appendChild(title);
     book.appendChild(author);
     book.appendChild(pages);
@@ -105,7 +96,6 @@ function addEntryToDom(i) {
     });
 
     form.reset();
-    // console.log(myLibrary);
 }
 
 function initialize() {
@@ -114,31 +104,15 @@ function initialize() {
     libraryContainer.appendChild(libraryGrid);
     myLibrary.push(new Book("The Hobbit", "J.R.R. Tolkien", "304 pages", true));
     updateLibrary();
-
-    // addEntry.addEventListener('click', ()=> {
-    //     // libraryContainer.style.visibility = "hidden";
-    //     // formContainer.style.visibility = "visible";
-    //     // libraryContainer.classList.add('invisible');
-    //     // formContainer.classList.remove('invisible');
-    //     toggleFormVisible();
-    // });
     
     formClose.addEventListener('click', (e) => {
         form.reset();
-        // libraryContainer.style.visibility = "visible";
-        // formContainer.style.visibility = "hidden";
-        // libraryContainer.classList.remove('invisible');
-        // formContainer.classList.add('invisible');
         toggleFormVisible();
     });
     
     confirmEntry.addEventListener('click', (e) => {
         e.preventDefault();
         addBookToLibrary();
-        // libraryContainer.style.visibility = "visible";
-        // formContainer.style.visibility = "hidden";
-        // libraryContainer.classList.remove('invisible');
-        // formContainer.classList.add('invisible');
         toggleFormVisible();
     });
 }
