@@ -8,7 +8,7 @@ const formPages = document.querySelector("#pages");
 const formRead = document.querySelector("#read");
 const confirmEntry = document.querySelector(".submit");
 const libraryContainer = document.querySelector(".library-container");
-const libraryInnerContainer = document.querySelector(".library");
+// const libraryInnerContainer = document.querySelector(".library");
 const removeEntryButton = document.querySelector(".remove-entry");
 let libraryGrid = document.querySelector(".library-grid");
 
@@ -35,7 +35,7 @@ function updateLibrary() {
     libraryGrid.remove();
     libraryGrid = document.createElement('div');
     libraryGrid.classList.add('library-grid');
-    libraryInnerContainer.appendChild(libraryGrid);
+    libraryContainer.appendChild(libraryGrid);
     for (let i=0 ; i< myLibrary.length; i++) {
         addEntryToDom(i);
     }
