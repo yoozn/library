@@ -13,6 +13,7 @@ const removeEntryButton = document.querySelector(".remove-entry");
 let libraryGrid = document.querySelector(".library-grid");
 
 let myLibrary = [];
+let formVisible = false;
 
 function Book(title, author, pages, read) {
     this.title = title,
@@ -44,8 +45,13 @@ function updateLibrary() {
     addEntry.textContent = "+";
     libraryGrid.appendChild(addEntry);
     addEntry.addEventListener('click', ()=> {
-        libraryContainer.style.visibility = "hidden";
-        formContainer.style.visibility = "visible";
+        // libraryContainer.style.visibility = "hidden";
+        // formContainer.style.visibility = "visible";
+        // libraryContainer.style.opacity = 0;
+        // formContainer.style.opacity = 100;
+        // libraryContainer.classList.add('invisible');
+        // formContainer.classList.remove('invisible');
+        toggleFormVisible();
     });
 }
 
@@ -90,31 +96,68 @@ function addEntryToDom(i) {
     remove.addEventListener('click', () => {
         const index = remove.parentElement.dataset.index;
         myLibrary.splice(index, 1);
-        updateLibrary();
+        book.style.pointerEvents = "none";
+        book.classList.add("shrink");
+        book.classList.add("invisible");
+        book.addEventListener('transitionend', updateLibrary);
     });
 
     form.reset();
-    console.log(myLibrary);
+    // console.log(myLibrary);
 }
 
 function initialize() {
     addEntry.addEventListener('click', ()=> {
-        libraryContainer.style.visibility = "hidden";
-        formContainer.style.visibility = "visible";
-    })
+        // libraryContainer.style.visibility = "hidden";
+        // formContainer.style.visibility = "visible";
+        // libraryContainer.classList.add('invisible');
+        // formContainer.classList.remove('invisible');
+        toggleFormVisible();
+    });
     
     formClose.addEventListener('click', (e) => {
         form.reset();
-        libraryContainer.style.visibility = "visible";
-        formContainer.style.visibility = "hidden";
-    })
+        // libraryContainer.style.visibility = "visible";
+        // formContainer.style.visibility = "hidden";
+        // libraryContainer.classList.remove('invisible');
+        // formContainer.classList.add('invisible');
+        toggleFormVisible();
+    });
     
     confirmEntry.addEventListener('click', (e) => {
         e.preventDefault();
         addBookToLibrary();
-        libraryContainer.style.visibility = "visible";
-        formContainer.style.visibility = "hidden";
-    })
+        // libraryContainer.style.visibility = "visible";
+        // formContainer.style.visibility = "hidden";
+        // libraryContainer.classList.remove('invisible');
+        // formContainer.classList.add('invisible');
+        toggleFormVisible();
+    });
+}
+
+function toggleFormVisible() {
+    if (formVisible) {
+        formVisible = !formVisible;
+        formContainer.classList.add('invisible');
+        form.classList.add('shrink');
+        formContainer.addEventListener('transitionend', () => {
+            libraryContainer.style.visibility = "visible";
+            formContainer.style.visibility = "hidden";
+            libraryContainer.classList.remove('invisible');
+            libraryContainer.classList.remove('shrink');
+        }, {once: true});
+    }
+    else {
+        formVisible = !formVisible;
+        libraryContainer.classList.add('invisible');
+        libraryContainer.classList.add('shrink');
+        libraryContainer.addEventListener('transitionend', () => {
+            libraryContainer.style.visibility = "hidden";
+            formContainer.style.visibility = "visible";
+            formContainer.classList.remove('invisible');
+            form.classList.remove('shrink');
+        }, {once: true});
+    }
 }
 
 initialize();

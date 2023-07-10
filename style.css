@@ -43,6 +43,8 @@ body {
     display:flex;
     justify-content: center;
     align-items: center;
+    transition: .6s;
+    transform: scale(1);
 }
 
 /* .library {
@@ -139,6 +141,7 @@ body {
     display:flex;
     justify-content: center;
     align-items: center;
+    transition: .5s;
 }
 
 .form {
@@ -153,6 +156,19 @@ body {
     display:flex;
     flex-direction: column;
     align-items: center;
+    transition: .6s;
+}
+
+.invisible {
+    opacity: 0;
+    transition: .6s;
+}
+
+.shrink,
+.book.shrink {
+    transform:scale(0);
+    transition: .6s;
+    /* transform-origin: initial; */
 }
 
 .form-title {
