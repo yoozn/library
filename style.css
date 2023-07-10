@@ -20,6 +20,7 @@ body {
 
 .header {
     display:flex;
+    justify-content: space-between;
     height: 10vh;
     background-color: rgba(0, 0, 0, 0.767);
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.452);
@@ -28,8 +29,20 @@ body {
     padding-left: 2%;
     user-select: none;
 }
+
+
 .header > p {
     transition: .5s;
+}
+
+.header img {
+    height: 50px;
+    padding-top: 10px;
+    margin-right: 40px;
+}
+
+.header img:hover {
+    transform: scale(1.1) rotate(4deg);
 }
 
 .header > p:hover {
@@ -95,7 +108,13 @@ body {
     top: 5%;
     right: 5%;
     border-radius: 20px;
-    background-color: rgb(255, 126, 126);
+    background-color: rgb(255, 97, 97);
+}
+
+.remove-entry:hover,
+.close-button:hover {
+    transform:scale(1.4);
+    border: 2px solid rgba(90, 90, 90, 0.534);
 }
 
 .book > p {
@@ -177,6 +196,7 @@ body {
     margin-bottom:60px;
     font-size: 2.2rem;
     font-weight: bold;
+    user-select: none;
 }
 
 .entries {
@@ -201,6 +221,7 @@ body {
 .read > label {
     font-size: 1.4rem;
     font-weight: bold;
+    user-select: none;
 }
 
 .entry > input {
@@ -208,10 +229,22 @@ body {
     border-radius: 10px;
     background-color: rgba(107, 107, 107, 0.596);
     border: 2px solid rgba(255, 255, 255, 0.466);
+    padding-left: 10px;
+}
+
+.entry > input:hover,
+.entry > input:focus {
+    transform:scale(1.1);
+    background-color: rgba(134, 134, 134, 0.596);
+    outline: none;
 }
 
 .read > input {
     size: 40px;
+}
+
+input[type="checkbox"]:hover {
+    transform:scale(1.3);
 }
 
 .submit {
@@ -223,6 +256,11 @@ body {
     background-color: rgba(107, 107, 107, 0.596);
     font-size: 1.2rem;
     font-weight: bold;
+}
+
+.submit:hover {
+    transform:scale(1.1);
+    border: 2px solid rgb(145, 145, 145);
 }
 
 .close-button {

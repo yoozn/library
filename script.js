@@ -22,6 +22,8 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
+
+
 Book.prototype.info = function() {
     return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read ? "read." : "not read yet."}`;
 }
@@ -107,13 +109,19 @@ function addEntryToDom(i) {
 }
 
 function initialize() {
-    addEntry.addEventListener('click', ()=> {
-        // libraryContainer.style.visibility = "hidden";
-        // formContainer.style.visibility = "visible";
-        // libraryContainer.classList.add('invisible');
-        // formContainer.classList.remove('invisible');
-        toggleFormVisible();
-    });
+    libraryGrid = document.createElement('div');
+    libraryGrid.classList.add('library-grid');
+    libraryContainer.appendChild(libraryGrid);
+    myLibrary.push(new Book("The Hobbit", "J.R.R. Tolkien", "304 pages", true));
+    updateLibrary();
+
+    // addEntry.addEventListener('click', ()=> {
+    //     // libraryContainer.style.visibility = "hidden";
+    //     // formContainer.style.visibility = "visible";
+    //     // libraryContainer.classList.add('invisible');
+    //     // formContainer.classList.remove('invisible');
+    //     toggleFormVisible();
+    // });
     
     formClose.addEventListener('click', (e) => {
         form.reset();
@@ -159,7 +167,6 @@ function toggleFormVisible() {
         }, {once: true});
     }
 }
-
 initialize();
 
 
